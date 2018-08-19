@@ -1,0 +1,453 @@
+\documentclass[a4paper]{article}
+\usepackage[ngerman,british]{babel}
+\usepackage[latin1]{inputenc}% erm\"oglich die direkte Eingabe der Umlaute
+\usepackage[T1]{fontenc} % das Trennen der Umlaute
+\usepackage{textcomp}
+\usepackage{graphicx}
+\usepackage{tabu}
+\usepackage{gensymb}
+%\usepackage{flafter}%nicht vor abschnittsüberschrift floaten
+%\usepackage{multirow} %tables with multirows
+\usepackage[textfont=it, font=small, labelfont=it]{caption}%caption not like text
+\usepackage{setspace}%change space between lines
+\usepackage{placeins}%floatbarrier
+\usepackage{pdflscape}%querformat
+\usepackage{float}%picture appears here
+\usepackage{listings} %for python code
+\usepackage{lineno} %for linenumbers
+\usepackage{geometry} %seitenränder
+\usepackage{tocloft}%list of figures
+\usepackage{fancyhdr}%display section 
+\usepackage{array}%centered colums
+\usepackage{longtable}
+
+
+
+\title{Absolute Quantification of Phytoplasma}
+\author{Sophie-Luise Heidig }
+
+\renewcommand{\baselinestretch}{1,8}
+
+\pagestyle{fancy}  
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+
+%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{document}
+\pagenumbering{gobble}
+
+\vspace*{\fill}
+\begin{center}
+{\Huge \textbf{\textsc{Absolute Quantification of Phytoplasma}}}
+\vspace{10pt}
+\hrule
+\vspace{30pt}
+ Bachelor Thesis \textit{(Bachelorarbeit)}
+
+\vspace{10pt}
+{\setstretch{1.2} submitted for the aquisition of the academic degree BSc in Molecular Biotechnology at the Technical University Dresden.
+
+}
+\vspace*{\fill}
+written by
+
+\textbf{Sophie-Luise Heidig} 
+
+(born on 1st October 1995 in Radebeul, Germany)
+
+matriculation number: 4533393
+
+\vspace{80pt}
+{\setstretch{1.2} 
+\begin{tabular}{>{\centering\arraybackslash}p{7cm}>{\centering\arraybackslash}p{7cm}}
+\multicolumn{2}{c}{under the supervision of}\\
+&\\
+\textbf{Prof Marta Vasconcelos} &\textbf{Prof Stefan Wanke}\\
+Universidade Catholica Portuguesa &Technische Universit\"at Dresden \\	
+Escola Superior de Biotecnologia&Fakult\"at Biologie\\	
+Rua Arquiteto Lobao Vital, Apartado 2511 &Zellescher Weg 20b\\
+4202-401 Porto &01217 Dresden\\
+(primary reviewer)&(secondary reviewer)\\
+\end{tabular}
+
+\vspace*{\fill}
+Date of submission: \today }
+
+\end{center}
+\vfill
+\clearpage
+
+\quad
+\newpage
+
+
+%Abstract
+\mbox{}
+\vfill
+\begin{abstract}
+The goal is to establish a protocol for the absolute quantification of phytoplasma in grapevine. 
+As there was no grapevine material available due to the time of the year, experiments were conducted with plant material from \textit{Catharantus roseus} and the \textit{Ca. Phytoplasma asteris}, a phytoplasma strand that causes ``Aster Yellows'' disease.
+The tasks include micropropagation, DNA extraction, primer design, electrophoresis for molecular detection, cloning of DNA fragments in competent \textit{E. coli} cells to create an external standard and quantitative RealTime PCR.
+\end{abstract}
+
+\pagebreak
+
+%Inhaltsverzeichnis
+\tableofcontents
+
+\pagebreak
+
+%Abkürzungsverzeichnis
+\section*{List of abbreviations}
+
+\begin{table}[!h]
+\centering
+{\setstretch{1.2} 
+\begin{tabular} { l  l }
+Abbreviation & Meaning \\ \hline
+\textit{Ca.}& \textit{Candidatus}\\
+PCR & Polymerase-Chain-Reaction \\
+qPCR & quantitative PCR\\
+
+
+
+\end{tabular}}
+\end{table}
+\pagebreak
+
+%abbverz
+\renewcommand{\cftfignumwidth}{6em}
+\renewcommand{\cftfigpresnum}{Figure}
+\listoffigures
+
+\pagebreak
+
+%Tabellenverz
+\renewcommand{\cfttabnumwidth}{6em}
+\renewcommand{\cfttabpresnum}{Table}
+\listoftables
+
+\pagebreak
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\fancyfoot[C]{\thepage}
+\fancyhead[C]{\leftmark}
+\renewcommand{\headrulewidth}{0.5pt} 
+
+%Zusfassung
+\pagenumbering{arabic}
+\section{Summary}
+
+phystoplasma = divers
+living in 2 domains like virus but no virus
+bacteria with no cellwall
+gc lowest, shortes genome
+big danger to agriculture no cure
+show how to use molecular methods to 
+ establish quantification method to evaluate countermeasures tried 
+including a cloning step and different PCRs techniques such es direct PCR, Nested PCR and RealTime PCR as quantitative PCR
+XXXXXXXXXXXXXX
+\pagebreak
+
+%Einleitung
+\section{Introduction}
+
+%	Allg
+\subsection{Phytoplasma}
+%THIS NEEDS PCIS SO BAD
+Phytoplasma are a group of wall-less bacteria that are held accountable for currently more than 300 number of plant diseases.
+Research just recently started to reveal their secrets and there is no cure yet for the partly severe diseases they cause. They remain a mystery in many ways.
+Phytoplasma diseases cause economic losses in almost every known food crop as severe as nearly eliminating the traditional lime production in Oman and Iran or elm tree plantations in Europe and North America \cite{p24}. 
+
+Phytoplasma are pleiomorphic bacteria with a diameter of less than 1 $\mu$m enclosed by a double layer membrane and as mentioned before, are lacking a cell wall. This means they may even pass through bacterial filters and therefore making sterilization of solutions %which why
+ through filtration ineffective.
+The bacteria infest the sieve tubes or phloemparenchyma of their host plants. The concentration of bacteria in plant cells varies severely over season and plant organ, but the highest concentrations usually can be found in young leaves  \cite{p15}.
+
+Phytoplasma were first discovered in 1967 by Doi et al. in the leaves and shoots of mulberry trees.
+Soon they were linked to various yellowing diseases. 
+As for their physical resemblance to mycoplasma, they were referred to as ``mycoplasmalike organism'' or short MLO \cite{p14}.
+In 1994 the trivial name ``Pythoplasma'' was officially adapted \cite{p30}.
+Apart from this, there is one big difference between mycoplasma and phytoplasma: While mycoplasma infections are a big problem in cell culture, phytoplasma are hardly cultivable in vitro in cell free media. Only in 2014 the first axenic cultures of phytoplasma were successfully grown \cite{p25}.
+Even until now, phytoplasma are usually maintained in vivo, for example the reference strain \textit{Ca.  phytoplasma asteris}  in \textit{Catharantus roseus}, also known as Madagascar periwinkle, by micropropagation \cite{p13}.
+For long time phytoplasma could not be assigned to any class of bacteria, because this requires examinations in culture. 
+This led to their status as \textit{Candidatus (Ca.)}, a provisional classification for not fully described species \cite{p30}.
+They were placed within the group of mollicutes next to the mycoplasma until in 1990 phylogenetic analysis proved that phytoplasma are a monophyletic group which should be assigned an own taxonomic genus \cite{p13}.
+Along with this, with biomolecular methods as PCR and gelelectrophoresis, subgroups of phytoplasma could be identified. In 2004, standard requirements to belong to the \textit{Candidatus} Phytoplasma species where set. 
+97,5\% of sequence identity to the 16S rRNA sequence of previously known phytoplasma is required. One can also find a significant variability in this region to differentiate subgroups \cite{p24}.
+So far, 28 subgroups have been identified \cite{p13}, as to be seen in table~\ref{AllPhy} in the appendix.
+Other regions that vary between subgroups are the 16S-23S spacer region as well as other ribosomal genes as \textit{tuf} or \textit{secY} \cite{p24}.
+
+Phytoplasma have one of the smallest self-replicating genomes. It can be as little as 530 kbp up to 1350 kbp. The phytoplasma genome shows an extremely low GC-content of only 23 - 29,5\% and a tendency to further reduction. 
+Already now, phytoplasma are lacking metabolic pathways that used to be seen as obligate for life, for example an ATP synthesis pathway. On the other hand, phytoplasma show an unusual amount of repeated sequences for the small size of the genome. Multicopy genes are the usual and even extensive sequences as the ABC transporter system for nickel may occur twice \cite{p13}.
+These tendencies are commonly observed in parasites and may be a sign of the evolution of this species towards a even more parasitic lifestyle \cite{p24}. 
+Currently, only 4 phytoplasma genomes are fully sequenced. One is, from the 16rS subgroup I - B, \textit{Ca. Phytoplasma asteris} \cite{p24}.
+
+Plants infected with phytoplasma show symptoms of profound disturbance of plant signaling mechanisms, for example growth regulators. 
+This leads to yellowing, dwarfing or ``witches broom'' \cite{p24}.
+Some kinds like \textit {Ca. Phytoplasma palmae} in coconut trees in Florida are even lethal while others just lead to a different appearance of the plant.
+As these symptoms are of a rather general quality, they can not be used for diagnostic purposes. 
+These unspecific symptoms and their spreading through an insect host lead to the long-lasting misconception that many yellowing diseases in plants were caused by viruses \cite{p13}.
+
+
+%	Spez Art
+ \subsubsection{\textit{Ca. Phytoplasma asteris}}
+As reference strain, this species was chosen to continue the work in the project while no material of the actual subject is available due to the season. 
+
+ \subsubsection{\textit{Ca. Phytoplasma vitis}}
+Since a couple of years, a strain called \textit{Ca. Phytoplasma vitis} is infecting vineyards in southern Europe, causing a decline of grapevine size and quality and therefor significant losses in the wine industry \cite{p10}. 
+One of the first areas which were infected is the Duoro wine region near Porto. 
+
+Phytoplasma in grapevine are transmitted via the salvia of a phloem feeding invasive species of leafhoppers from North America, ``Scaphoideus titanus''.
+Due to the leafhoppers flight behaviour a natural spread of the disease occurs only over short distance of a few hundred meters. 
+Yet \textit{Ca. Phytoplasma vitis} can appear everywhere where its vector shows up. 
+Due to climate change that causes milder winters all over Europe, further spread in southern Europe is expected in the next few years \cite{p10}. 
+The current distribution, as to be seen in Figure~\ref{fig:disfd}, is already alarming. 
+The leafhopper species \textit{S. titanus} exists in the bigger part of the vineyards in France and Italy as well as in other countries of southern Europe.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.8\linewidth]{DisFD.jpg}
+	\caption[Distribution of \textit{Scaphoideus titanus}]{Distribution of \textit{Scaphoideus titanus} among European vineyards \cite{p33}}
+	\label{fig:disfd}
+\end{figure}
+
+The species of interest is \textit{Ca. Phytoplasma vitis}, which causes Flavascence Dor\'ee (FD) in grapevine. This phytoplasma belongs in the elm yellows group 16Sr V \cite{p11}
+,or more specifically, \textit{Ca. Phytoplasma vitis} belongs to the 16Sr subgroup 16Sr V-C. \cite{p13}. A map of the genome of FD can be seen in Figure~\ref{fig:mapfd}.
+%Especially white wine types are susceptible for this disease. %\cite{p4} NON CITEABLE
+
+%ADD p16 pic: chromosome map of fdp
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.6\linewidth]{MapFD.jpg}
+	\caption[Physical and genetic map of the chromosome of the \textit{Ca. Phytoplasma vitis}]{Physical and genetic map of the chromosome of the \textit{Ca. Phytoplasma vitis}. Restriction sites for \textit{BssHII, EagI, MluI]} and \textit{SalI} are indicated on the circular scale. Restriction fragments hybridizing with 16S rDNA, \textit{tuf}, FDDH29, \textit{uvrB-degV, secY, map,} FD2 and FDSH05 probes are delimited by bars. The orientation of \textit{rrn} genes is symbolized by arrows. \cite{p16}}
+	\label{fig:mapfd}
+\end{figure}
+
+In grapevine, a phytoplasma infection causes leaf yellowing, smaller and fewer leaves. The plant does not produce as many shoots and they are very short.
+
+%	Übergeordnete forschung
+\subsection{Overarching research}
+No efficient treatment is known apart from rouging when the vineyard is infected and vector control via excessive insecticide use to prevent the former. 
+Both options are expensive and not suitable for a modern environmentally friendly agriculture approach. 
+Therefor other approaches on vector control are currently evaluated, for example covering crops or disrupt the mating of the vector, as well as attempts like to breed naturally resistant crops or hormone treatments to activate plant resistance.
+
+
+
+%	methode generell
+\subsection{Polymerase Chain Reaction}
+\subsubsection{Direct PCR}
+\subsubsection{Nested PCR}
+\subsubsection{q- or RealTime PCR}
+		%Kommentar != RT PCR!
+
+%	Vorarbeiten&Forschungshypothese
+\subsection{Preliminary Work and hypothesis}
+		%micropropagation?
+		%wo kommen die gewählten primer her
+		%proben aus gewächshaus
+
+\pagebreak
+
+%Material/Methoden
+\section{Materials and Methods}
+%	Material
+%		GERÄTE
+%		chemikalien
+%		primer
+%		Vectoren (?)
+%		medien/puffer
+%		kits
+%	Methoden
+%		microprop
+\subsection{Micropropagation}
+
+%		dna ex
+\subsection{DNA extraction}
+
+%		primer auswahl	
+\subsection{Molecular detection}
+
+%			primer design (?)
+\subsubsection{Primer selection}
+
+%			sequencing
+\paragraph{Sequencing}
+%				code
+%add some blah
+\pagebreak
+\newgeometry{ left=3cm,  right=3cm,  top=3cm,  bottom=3cm,  bindingoffset=5mm}
+\begin{landscape}
+
+\begin{table}[!h]
+\centering 
+{\setstretch{1,0}
+\begin{tabular}{p{10cm} p{11cm}}
+\begin{internallinenumbers}\lstinputlisting[language=Python]{SuperSmartBlast.py}
+\end{internallinenumbers}
+&
+\lstinputlisting[language=Python]{comments.py}\\
+\end{tabular}}
+\end{table}
+
+\end{landscape}
+\restoregeometry
+
+%			rtPCRR
+\paragraph{RealTime PCR}
+
+%		nested pcr
+\subsubsection{Nested PCR}
+
+%		elpho
+\subsubsection{Electrophoresis}
+%		agarose gele
+\paragraph{Agarose gel preparation}
+
+%		Clonen
+\subsection{Cloning}
+%			präp
+%				agarplatten
+\subsubsection{Preparation of agar plates}
+%				dna reinigung
+\subsubsection{DNA purification}
+%				ligation
+\subsubsection{Ligation of PCR product in vector}
+%			transformation
+\subsubsection{Transformation}
+%			blauweiss sel
+\subsubsection{Selection of positives clones}
+
+%		colonie qPCR (EVTL VORHER WEIL PRIMERTEST?als realtime pcr)
+\subsection{qPCR with positive colony}
+
+\pagebreak
+
+%Ergebnisse
+\section{Results}
+
+%	microprop (evtl +pic contaminierung)
+\subsection{Micropropagation}
+
+%	dna ex --> kit ergebnisse oder nur von trad kit?)
+\subsection{DNA extraction}
+\begin{table}[!h]
+\centering
+\caption{Extraction of total plant DNA of \textit{C. roseus} with traditional protocol on 02.05.2018}
+{\setstretch{1.2} 
+\begin{tabular} { | l | c | c | c|}\hline
+	&	Weight  [mg]	&	Concentration [ng/$\mu$L] & Purity 	\\ \hline 
+HV	&	1.048		&	3.160					&	1,960	\\ \hline
+KVE 	&	1.155,9		&	2.648				& 	1,961	\\ \hline
+AY	&	727,5		&	2.660					&	1,788	\\ \hline
+Hyd8 &	1.025,2		&	1.315				&	1,934	\\ \hline
+\end{tabular}}
+\end{table}
+%		--> RESTRIKTIONSVERDAU
+
+\subsection{Molecular detection}
+\subsubsection{Primer selection}
+%	tabelle sequencing
+\paragraph{Sequencing}
+%	daten primertest realtimePCR
+\paragraph{RealTimePCR}
+%	gelbilder nested PCR
+\subsubsection{Gelelectrophoresis of Nested PCR}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.8\linewidth]{Elpho0615.jpg}
+	\caption[Agarosegelelectrophoresis for gel purification. ]{Agarosegelelectrophoresis for gel purification. PCR with extracted plant DNA of \textit{C.roseus} strain AY and Hyd8 and primer pairs AYSecY1 and AYSecY2 in duplicates. Lane 1 and 12 GRS ladder 1kbp. Lane 2 to 6 with AYSecY1, Lane 7 to 11 with AYSecY2. For both primer pairs, the DNA template was applied as following: control (sample without DNA template) - AY in duplicate - Hyd8 in duplicate. The gel ran at 80 V for 45 min.}
+	\label{fig:elpho0615}
+\end{figure}
+
+\subsection{Cloning}
+%	GELBILD VECTOR VS VECTOR MIT INSERT?!
+\subsubsection{Ligation of PCR product in vector}
+%	pic clonversuche
+\subsubsection{Selection of positive clones}
+
+
+\pagebreak
+
+%Diskussion
+\section{Discussion}
+%	primerauswahl
+\subsection{Molecular detection}
+\subsubsection{Primer selection}
+%	nested PCR
+\subsubsection{Nested PCR}
+%	clonen
+\subsection{Cloning}
+%	qPCR
+\subsection{qPCR with positive colony}
+
+\pagebreak
+
+%	FAZIT
+\section{Conclusion}
+
+
+\pagebreak
+
+%	aUSBLICK
+\section{Outlook}
+%		quantifizierung ohne clonen mittels housekeeping gen
+Absolute quantification with qPCR without a cloning step
+
+\pagebreak
+
+%literaturverzeichnis
+\bibliography{sources}
+\bibliographystyle{apalike}
+
+\pagebreak
+
+%Danksagung
+\thispagestyle{plain}
+\mbox{}
+\vspace{50pt}
+\section{Acknowledgement}
+	marta für die möglichkeit
+	vollmer für kontakt
+	wanke für 2.korr
+	manuel für betreuung
+	claudia und nuah, rui(?) für unerwartete hilfe if okay
+	labormitarbeiter
+	eltern und freunde für moralische unterstützung
+
+\pagebreak
+
+%eigenständigkeitserklärung
+\thispagestyle{plain}
+\mbox{}
+\vspace{50pt}
+\section{Declaration of Originality}
+	
+I confirm that this assignment is my own work and that I have not sought or used inadmissible  help  of  third  parties to  produce  this  work  and that  I  have  clearly  referenced  all  sources  used  in the work. 
+
+I  have  fully  referenced  and  used  inverted  commas  for  all  text  directly  or  indirectly quoted from a source.
+This  work  has  not  yet  been  submitted  to  another  examination  institution  - neither  in  Germany nor outside Germany -  neither in the same nor in a similar way and has not yet been published .
+
+\vspace{70pt}
+Dresden, \today
+\vspace{35pt}
+
+\rule{7cm}{.4pt}\par
+Sophie-Luise Heidig
+
+\pagebreak
+
+%appendix
+\newgeometry{ left=3cm,  right=3cm,  top=3cm,  bottom=3cm,  bindingoffset=5mm}
+\begin{landscape}
+\section{Appendix}
+
+{\setstretch{1.1} 
+\input{TablePhyto}}
+\end{landscape}
+\restoregeometry
+
+does it work \ref{AllPhy}
+\end{document}
